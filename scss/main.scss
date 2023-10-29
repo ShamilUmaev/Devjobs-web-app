@@ -1,0 +1,29 @@
+// Import the font
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800&family=Manrope:wght@800&family=Poppins:wght@500;700&family=Rubik:wght@400;500;700&display=swap');
+
+// Variables
+:root {
+    $violet: #5964E0;
+    $light-violet: #939BF4;
+    $dark-blue: #19202D;
+    $midnight: #121721;
+    $white: #fff;
+    $light-grey: #F4F6F8;
+    $gray: #9DAEC2;
+    $dark-grey: #6E8098;
+}
+
+// Reset default styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Kumbh Sans', 'Monrope', 'Poppins', 'Rubik', sans-serif;
+} 
