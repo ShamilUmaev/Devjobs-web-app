@@ -1,4 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600;700;800&family=Manrope:wght@800&family=Poppins:wght@500;700&family=Rubik:wght@400;500;700&display=swap");
+
+/* Variables */
+:root {
+  --violet: #5964e0;
+  --light-violet: #939bf4;
+  --dark-blue: #19202d;
+  --midnight: #121721;
+  --white: #fff;
+  --light-grey: #f4f6f8;
+  --gray: #9daec2;
+  --dark-grey: #6e8098;
+}
+
+/* Reset default styles */
 * {
   margin: 0;
   padding: 0;
@@ -9,25 +23,30 @@ html {
   font-size: 62.5%;
 }
 
-body {
-  font-family: "Kumbh Sans", "Monrope", "Poppins", "Rubik", sans-serif;
-}
-
 html, body {
   min-width: 100%;
   min-height: 100vh;
 }
 
-.page-outer-container {
-  min-width: 375px;
+body {
+  font-family: "Kumbh Sans", "Monrope", "Poppins", "Rubik", sans-serif;
+  background-color: var(--light-grey);
 }
 
+/* Page outer container */
+.page-outer-container {
+  min-width: 375px;
+  
+}
+
+/* Header top */
 .header-top {
   height: 135px;
   width: 100%;
   padding-top: 2.5rem;
   background: url("../assets/mobile/header-mobile-background.png") no-repeat center center/cover;
 }
+
 .header-top .logo {
   color: #fff;
   font-size: 2.8rem;
@@ -45,6 +64,7 @@ html, body {
   align-items: center;
 }
 
+/* Toggle button to switch the mode */
 .switch {
   position: relative;
   display: inline-block;
@@ -89,7 +109,51 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
+/* Search input */
+.form {
+  width: 100%;
+  background-color: white;
+  border-radius: 6px;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(50%);
+}
+
+input[type="text"] {
+  border: none;
+  font-size: 1.6rem;
+  font-family: inherit;
+  color: var(--dark-blue);
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+.filter-search-container {
+  width: 85px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+.search-btn {
+  padding: 1.3rem 1.5rem;
+  background-color: var(--violet);
+  border: none;
+  color: var(--white);
+  border-radius: 5px;
+  font-size: 1.8rem;
+}
+
+/* Utility classes */
 .wrapper {
   width: 90%;
   margin: 0 auto;
-}/*# sourceMappingURL=main.css.map */
+}
+
+
+
