@@ -30,13 +30,12 @@ html, body {
 
 body {
   font-family: "Kumbh Sans", "Monrope", "Poppins", "Rubik", sans-serif;
-  background-color: var(--light-grey);
 }
 
 /* Page outer container */
 .page-outer-container {
   min-width: 375px;
-  
+  background-color: var(--light-grey);
 }
 
 /* Header top */
@@ -151,15 +150,21 @@ input[type="text"]:focus {
 
 /* Main section */
 .main-section {
-  padding-top: 10rem;
+  padding: 5rem 0; 
 }
 
+/* .jobs-outer-container {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
 .job-card {
+  width: 100%;
   background-color: var(--white);
   padding: 5rem 3.5rem 3rem;
   border-radius: 6px;
   position: relative;
-  margin-bottom: 5rem;
+  margin-top: 5rem;
 }
 
 .job-company-logo {
@@ -207,7 +212,17 @@ input[type="text"]:focus {
   margin-top: 4rem;
 }
 
-
+.load-more-btn {
+  padding: 1.5rem 3.7rem;
+  background-color: var(--violet);
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  display: block;
+  margin: 3.5rem auto 0;
+}
 
 
 
