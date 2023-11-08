@@ -149,6 +149,68 @@ input[type="text"]:focus {
   font-size: 1.8rem;
 }
 
+/* Main section */
+.main-section {
+  padding-top: 10rem;
+}
+
+.job-card {
+  background-color: var(--white);
+  padding: 5rem 3.5rem 3rem;
+  border-radius: 6px;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.job-company-logo {
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: orange;
+  border-radius: 15px;
+}
+
+.posted-date {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--dark-grey);
+  font-size: 1.6rem;
+
+}
+
+.bullet-point {
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+  background-color: var(--dark-grey);
+}
+
+.job-title {
+  font-size: 2rem;
+  color: var(--dark-blue);
+  margin: 1rem 0 2rem;
+}
+
+.company-name {
+  color: var(--dark-grey);
+  font-size: 1.6rem;
+}
+
+.company-location {
+  color: var(--violet);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 4rem;
+}
+
+
+
+
+
 /* Utility classes */
 .wrapper {
   width: 90%;
