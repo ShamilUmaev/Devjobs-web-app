@@ -132,25 +132,28 @@ input[type="text"]:focus {
   outline: none;
 }
 
+.filter-search-container {
+  width: 95px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .filter-svg {
   fill: #6E8098;
 }
 
-.filter-search-container {
-  width: 85px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* border: 1px solid black; */
-}
-
-.search-btn {
-  padding: 1.3rem 1.5rem;
+.btn-primary {
   background-color: var(--violet);
   border: none;
   color: var(--white);
   border-radius: 5px;
   font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.search-btn {
+  padding: 1.3rem 1.5rem;
 }
 
 /* Main section */
@@ -217,16 +220,79 @@ input[type="text"]:focus {
 
 .load-more-btn {
   padding: 1.5rem 3.7rem;
-  background-color: var(--violet);
-  color: var(--white);
   font-size: 1.6rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 5px;
   display: block;
   margin: 3.5rem auto 0;
 }
 
+.filter-form-popup-mobile {
+  position: absolute;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+}
+
+.filter-location-text-input {
+  display: flex;
+  align-items: center;
+  padding: 2.5rem;
+  border-bottom: 1px solid var(--dark-grey);
+}
+
+.location-svg {
+  margin-right: 1.5rem;
+}
+
+.filter-fulltime-only {
+  padding: 2.5rem;
+}
+
+.fulltime-label {
+  font-size: 1.6rem;
+  color: var(--dark-blue);
+  font-weight: 700;
+}
+
+.filter-fulltime-only div {
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.popup-search-btn {
+  width: 100%;
+  padding: 1.5rem 0;
+  margin-top: 2.5rem;
+}
+
+/* Overlay when the popup to filter the jobs is showen */
+.overlay {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 3;
+}
+
+/* Dark mode classes */
 .dark-mode-bg {
   background-color: var(--midnight);
 }
@@ -251,6 +317,18 @@ input[type="text"]:focus {
 .wrapper {
   width: 90%;
   margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+  /* visibility: hidden;
+  max-height: 0; */
+}
+
+.visible {
+  display: block;
+  /* visibility: hidden;
+  max-height: auto; */
 }
 
 
