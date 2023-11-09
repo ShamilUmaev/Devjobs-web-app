@@ -158,16 +158,14 @@ input[type="text"]:focus {
   padding: 5rem 0; 
 }
 
-/* .jobs-outer-container {
-  display: flex;
-  flex-wrap: wrap;
-} */
-
-.job-card {
+.card {
   width: 100%;
   background-color: var(--white);
-  padding: 5rem 3.5rem 3rem;
   border-radius: 6px;
+}
+
+.job-card {
+  padding: 5rem 3.5rem 3rem;
   position: relative;
   margin-top: 5rem;
 }
