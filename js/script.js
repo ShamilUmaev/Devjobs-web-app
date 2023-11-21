@@ -14,6 +14,7 @@ const companyName = document.querySelector('.company-name');
 const customCheckbox = document.querySelector('.checkmark');
 const jobsOuterContainer = document.querySelector('.jobs-outer-container');
 
+
 const switchToDarkMode = () => {
     toggleModeBtn.checked = true;
     localStorage.setItem('mode', 'dark');
@@ -128,14 +129,13 @@ const displayData = async () => {
     jobsOuterContainer.appendChild(loadMoreBtn);
 }
 
-displayData();
-
 const init = () => {
     if(window.location.pathname !== '/descpage.html') {
         popupBackground.addEventListener('click', closePopup);
         filterIcon.addEventListener('click', showPopup);
     }
-    window.addEventListener('DOMContentLoaded', checkMode);
+    // window.addEventListener('DOMContentLoaded', checkMode);
+    window.addEventListener('DOMContentLoaded', displayData);
     window.addEventListener('pageshow', checkMode);
     toggleModeBtn.addEventListener('click', toggleMode);
 }
