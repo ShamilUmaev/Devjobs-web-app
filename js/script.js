@@ -105,15 +105,11 @@ const closePopup = (e) => {
 const getData = async () => {
     const response = await fetch('../data.json');
     const data = await response.json();
-    // console.log(data);
     return data;
 }
 
-// getData();
-
 const displayData = async () => {
     const data = await getData();
-    console.log(data)
     data.forEach(job => {
         const div = document.createElement('div');
         div.classList.add('card', 'job-card');
