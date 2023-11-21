@@ -1,0 +1,81 @@
+/* Import variables */
+@import './variables.css';
+
+/* Primary button */
+.btn-primary {
+    background-color: var(--violet);
+    border: none;
+    color: var(--white);
+    border-radius: 5px;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+/* Secondary button */
+.btn-secondary {
+    background-color: #5964E01a;
+    color: var(--violet);
+    font-size: 1.6rem;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 1.5rem 2.5rem;
+}
+
+/* Bullet point */
+.bullet-point {
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background-color: var(--dark-grey);
+}
+
+/* Posted date */
+.posted-date {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dark-grey);
+    font-size: 1.6rem;
+}
+
+/* Dark mode classes */
+.dark-mode-midnight {
+    background-color: var(--midnight);
+}
+  
+.dark-mode-dark-blue {
+    background-color: var(--dark-blue);
+}
+  
+.filter-icon-dark-mode {
+    fill: #fff;
+}
+  
+.dark-mode-job-card {
+    background-color: var(--dark-blue);
+}
+
+.dark-mode-font {
+    color: var(--white);
+}
+  
+/* Wraper */
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Hide class */
+.hidden {
+    display: none;
+    /* visibility: hidden;
+    max-height: 0; */
+}
+
+/* Visible */
+.visible {
+    display: block;
+    /* visibility: hidden;
+    max-height: auto; */
+}

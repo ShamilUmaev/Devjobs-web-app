@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/utilities.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/headertop.css">
+    <link rel="stylesheet" href="./css/customcheckbox.css">
     <script src="https://kit.fontawesome.com/f64e1478e8.js" crossorigin="anonymous"></script>
     <script src="./js/script.js" defer></script>
     <title>Developer Jobs</title>
@@ -50,21 +54,21 @@
                         <div class="card job-card">
                             <div class="job-company-logo"></div>
                             <p class="posted-date"><span>5h ago</span> <span class="bullet-point"></span> <span>Full Time</span></p>
-                            <h4 class="job-title">Senior Software Engineer</h4>
+                            <a href="descpage.html"><h4 class="job-title">Senior Software Engineer</h4></a>
                             <p class="company-name">Scoot</p>
                             <p class="company-location">United Kingdom</p>
                         </div>
                         <div class="card job-card">
                             <div class="job-company-logo"></div>
                             <p class="posted-date"><span>5h ago</span> <span class="bullet-point"></span> <span>Full Time</span></p>
-                            <h4 class="job-title">Senior Software Engineer</h4>
+                            <a href="descpage.html"><h4 class="job-title">Senior Software Engineer</h4></a>
                             <p class="company-name">Scoot</p>
                             <p class="company-location">United Kingdom</p>
                         </div>
                         <div class="card job-card">
                             <div class="job-company-logo"></div>
                             <p class="posted-date"><span>5h ago</span> <span class="bullet-point"></span> <span>Full Time</span></p>
-                            <h4 class="job-title">Senior Software Engineer</h4>
+                            <a href="descpage.html"><h4 class="job-title">Senior Software Engineer</h4></a>
                             <p class="company-name">Scoot</p>
                             <p class="company-location">United Kingdom</p>
                         </div>
@@ -80,7 +84,10 @@
                             </div>
                             <div class="filter-fulltime-only">
                                 <div>
-                                    <input type="checkbox" name="fulltime" id="fulltime">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
                                     <label class="fulltime-label" for="full-time">Full Time Only</label>
                                 </div>
                                 <button class="btn-primary popup-search-btn" type="submit">Search</button>
