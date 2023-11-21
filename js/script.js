@@ -12,6 +12,7 @@ const headings = document.querySelectorAll('h4');
 const jobDescBg = document.querySelector('.job-desc-outer-container');
 const companyName = document.querySelector('.company-name');
 const customCheckbox = document.querySelector('.checkmark');
+const jobsOuterContainer = document.querySelector('.jobs-outer-container');
 
 const switchToDarkMode = () => {
     toggleModeBtn.checked = true;
@@ -100,6 +101,38 @@ const closePopup = (e) => {
         filterFormPopupMobile.classList.add('hidden');
     }
 }
+
+const getData = async () => {
+    const response = await fetch('../data.json');
+    const data = await response.json();
+    // console.log(data);
+    return data;
+}
+
+// getData();
+
+const displayData = async () => {
+    const data = await getData();
+    console.log(data)
+    data.forEach(job => {
+        const div = document.createElement('div');
+        div.classList.add('card', 'job-card');
+        div.innerHTML = `
+        <div class="job-company-logo" style="background-color: ${job.logoBackground};"><img class="job-company-logo-img" src="${job.logo}"></div>
+        <p class="posted-date"><span>${job.postedAt}</span> <span class="bullet-point"></span> <span>${job.contract}</span></p>
+        <a href="descpage.html"><h4 class="job-title">${job.position}</h4></a>
+        <p class="company-name">${job.company}</p>
+        <p class="company-location">${job.location}</p>
+        `;        
+        jobsOuterContainer.appendChild(div);
+    });
+    const loadMoreBtn = document.createElement('button');
+    loadMoreBtn.classList.add('btn-primary', 'load-more-btn');
+    loadMoreBtn.textContent = 'Load More';
+    jobsOuterContainer.appendChild(loadMoreBtn);
+}
+
+displayData();
 
 const init = () => {
     if(window.location.pathname !== '/descpage.html') {

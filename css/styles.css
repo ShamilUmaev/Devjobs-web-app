@@ -70,6 +70,13 @@ input[type="text"]:focus {
   height: 50px;
   background-color: orange;
   border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.job-company-logo-img {
+  width: 65%;
 }
 
 .job-title {
