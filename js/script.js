@@ -104,72 +104,14 @@ const closePopup = (e) => {
     }
 }
 
-const getData = async () => {
-    const response = await fetch('../data.json');
-    const data = await response.json();
-    return data;
-}
-
-const displayData = async () => {
-    const data = await getData();
-    data.forEach(job => {
-        const div = document.createElement('div');
-        div.classList.add('card', 'job-card');
-        div.innerHTML = `
-        <div class="job-company-logo" style="background-color: ${job.logoBackground};"><img class="job-company-logo-img" src="${job.logo}"></div>
-        <p class="posted-date"><span>${job.postedAt}</span> <span class="bullet-point"></span> <span>${job.contract}</span></p>
-        <a href="descpage.html"><h4 class="job-title">${job.position}</h4></a>
-        <p class="company-name">${job.company}</p>
-        <p class="company-location">${job.location}</p>
-        `;        
-        jobsOuterContainer.appendChild(div);
-    });
-    const loadMoreBtn = document.createElement('button');
-    loadMoreBtn.classList.add('btn-primary', 'load-more-btn');
-    loadMoreBtn.textContent = 'Load More';
-    jobsOuterContainer.appendChild(loadMoreBtn);
-}
-
-const displayFilteredData = (filteredJobs) => {
-    jobsOuterContainer.innerHTML = '';
-    filteredJobs.forEach(job => {
-        const div = document.createElement('div');
-        div.classList.add('card', 'job-card');
-        div.innerHTML = `
-        <div class="job-company-logo" style="background-color: ${job.logoBackground};"><img class="job-company-logo-img" src="${job.logo}"></div>
-        <p class="posted-date"><span>${job.postedAt}</span> <span class="bullet-point"></span> <span>${job.contract}</span></p>
-        <a href="descpage.html"><h4 class="job-title">${job.position}</h4></a>
-        <p class="company-name">${job.company}</p>
-        <p class="company-location">${job.location}</p>
-        `;        
-        jobsOuterContainer.appendChild(div);
-    });
-    const loadMoreBtn = document.createElement('button');
-    loadMoreBtn.classList.add('btn-primary', 'load-more-btn');
-    loadMoreBtn.textContent = 'Load More';
-    jobsOuterContainer.appendChild(loadMoreBtn);
-}
-
-const searchByTitle = async (e) => {
-    e.preventDefault();
-    const data = await getData();
-    const filteredByTitleJobs = data.filter(job => {
-        return job.position.toLowerCase().includes(filterByTitleInput.value.toLowerCase());
-    });
-    displayFilteredData(filteredByTitleJobs);
-    filterByTitleInput.value = '';
-}
-
 const init = () => {
     if(window.location.pathname !== '/descpage.html') {
         popupBackground.addEventListener('click', closePopup);
         filterIcon.addEventListener('click', showPopup);
     }
     // window.addEventListener('DOMContentLoaded', checkMode);
-    window.addEventListener('DOMContentLoaded', displayData);
     window.addEventListener('pageshow', checkMode);
     toggleModeBtn.addEventListener('click', toggleMode);
-    filterByTitleForm.addEventListener('submit', searchByTitle);
 }
 
 init();
