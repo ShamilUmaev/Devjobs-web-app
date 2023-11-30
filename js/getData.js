@@ -1,4 +1,28 @@
 // const pageOuterContainer = document.querySelector('.page-outer-container');
+const popupBackground = document.querySelector('.popup-background');
+const filterFormPopupMobile = document.querySelector('.filter-form-popup-mobile');
+const filterByLocationInput = document.querySelector('#job-location');
+const filterLocationForm = document.querySelector('.filter-location-form');
+
+const showPopup = () => {
+    popupBackground.classList.add('overlay');
+    filterFormPopupMobile.classList.remove('hidden');
+    filterFormPopupMobile.classList.add('visible');
+}
+
+const closePopup = (e) => {
+    if(e.target.classList.contains('overlay')) {
+        popupBackground.classList.remove('overlay');
+        filterFormPopupMobile.classList.remove('visible');
+        filterFormPopupMobile.classList.add('hidden');
+    }
+}
+
+const closePopupAfterLocationFilter = () => {
+    popupBackground.classList.remove('overlay');
+    filterFormPopupMobile.classList.remove('visible');
+    filterFormPopupMobile.classList.add('hidden');
+}
 
 const getData = async () => {
     const response = await fetch('../data.json?offset=0&limit=3');
@@ -51,11 +75,22 @@ const displayFilteredData = (filteredJobs) => {
 const searchByTitle = async (e) => {
     e.preventDefault();
     const data = await getData();
-    const filteredByTitleJobs = data.filter(job => {
+    const filteredJobsByTitle = data.filter(job => {
         return job.position.toLowerCase().includes(filterByTitleInput.value.toLowerCase());
     });
-    displayFilteredData(filteredByTitleJobs);
+    displayFilteredData(filteredJobsByTitle);
     filterByTitleInput.value = '';
+}
+
+const searchByLocation = async (e) => {
+    e.preventDefault();
+    const data = await getData();
+    const filteredJobsByLocation = data.filter(job => {
+        return job.location.toLowerCase().includes(filterByLocationInput.value.toLowerCase());
+    });
+    displayFilteredData(filteredJobsByLocation);
+    filterByLocationInput.value = '';
+    closePopupAfterLocationFilter();
 }
 
 const redirectToDescPage = (e) => {
@@ -63,12 +98,14 @@ const redirectToDescPage = (e) => {
         e.preventDefault();
         const jobId = e.target.parentElement.parentElement.getAttribute('id');
         window.location.href = `descpage.html?jobId=${jobId}`;
-        console.log(jobId)
     }
 }
 
 const init2 = () => {
+    popupBackground.addEventListener('click', closePopup);
+    filterIcon.addEventListener('click', showPopup);
     filterByTitleForm.addEventListener('submit', searchByTitle);
+    filterLocationForm.addEventListener('submit', searchByLocation);
     window.addEventListener('DOMContentLoaded', displayData);
     window.addEventListener('click', redirectToDescPage);
 }

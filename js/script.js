@@ -1,11 +1,11 @@
 const toggleModeBtn = document.querySelector("input[type='checkbox']");
 const pageOuterContainer = document.querySelector('.page-outer-container');
 const filterByTitleForm = document.querySelector('.filter-title-form');
-const popupBackground = document.querySelector('.popup-background');
+
 const filterIcon = document.querySelector('.filter-svg');
 const card = document.querySelectorAll('.card');
 const jobTitles = document.querySelectorAll('.job-title');
-const filterFormPopupMobile = document.querySelector('.filter-form-popup-mobile');
+
 const fulltimeLabel = document.querySelector('.fulltime-label');
 const footer = document.querySelector('.footer');
 const headings = document.querySelectorAll('h4');
@@ -90,25 +90,10 @@ const checkMode = () => {
     }
 }
 
-const showPopup = () => {
-    popupBackground.classList.add('overlay');
-    filterFormPopupMobile.classList.remove('hidden');
-    filterFormPopupMobile.classList.add('visible');
-}
-
-const closePopup = (e) => {
-    if(e.target.classList.contains('overlay')) {
-        popupBackground.classList.remove('overlay');
-        filterFormPopupMobile.classList.remove('visible');
-        filterFormPopupMobile.classList.add('hidden');
-    }
-}
-
 const init = () => {
-    if(window.location.pathname !== '/descpage.html') {
-        popupBackground.addEventListener('click', closePopup);
-        filterIcon.addEventListener('click', showPopup);
-    }
+    // if(window.location.pathname !== '/descpage.html') {
+        
+    // }
     // window.addEventListener('DOMContentLoaded', checkMode);
     window.addEventListener('pageshow', checkMode);
     toggleModeBtn.addEventListener('click', toggleMode);
