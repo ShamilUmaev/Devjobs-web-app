@@ -39,6 +39,11 @@
     font-size: 1.6rem;
 }
 
+/* Company logo image */
+.job-company-logo-img {
+    width: 65%;
+  }
+
 /* Dark mode classes */
 .dark-mode-midnight {
     background-color: var(--midnight);

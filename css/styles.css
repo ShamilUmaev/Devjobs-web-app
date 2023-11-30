@@ -82,10 +82,6 @@ input:-webkit-autofill:active{
   justify-content: center;
 }
 
-.job-company-logo-img {
-  width: 65%;
-}
-
 .job-title {
   font-size: 2rem;
   color: var(--dark-blue);

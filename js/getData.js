@@ -14,10 +14,11 @@ const displayData = async () => {
         div.innerHTML = `
             <div class="job-company-logo" style="background-color: ${job.logoBackground};"><img class="job-company-logo-img" src="${job.logo}"></div>
             <p class="posted-date"><span>${job.postedAt}</span> <span class="bullet-point"></span> <span>${job.contract}</span></p>
-            <a href="descpage.html"><h4 class="job-title">${job.position}</h4></a>
+            <a href="#"><h4 class="job-title">${job.position}</h4></a>
             <p class="company-name">${job.company}</p>
             <p class="company-location">${job.location}</p>
-        `;        
+        `;
+        div.setAttribute('id', job.id);        
         jobsOuterContainer.appendChild(div);
     });
     const loadMoreBtn = document.createElement('button');
@@ -34,10 +35,11 @@ const displayFilteredData = (filteredJobs) => {
         div.innerHTML = `
             <div class="job-company-logo" style="background-color: ${job.logoBackground};"><img class="job-company-logo-img" src="${job.logo}"></div>
             <p class="posted-date"><span>${job.postedAt}</span> <span class="bullet-point"></span> <span>${job.contract}</span></p>
-            <a href="descpage.html"><h4 class="job-title">${job.position}</h4></a>
+            <a href="#"><h4 class="job-title">${job.position}</h4></a>
             <p class="company-name">${job.company}</p>
             <p class="company-location">${job.location}</p>
         `;        
+        div.setAttribute('id', job.id);
         jobsOuterContainer.appendChild(div);
     });
     const loadMoreBtn = document.createElement('button');
@@ -56,9 +58,19 @@ const searchByTitle = async (e) => {
     filterByTitleInput.value = '';
 }
 
+const redirectToDescPage = (e) => {
+    if(e.target.classList.contains('job-title')) {
+        e.preventDefault();
+        const jobId = e.target.parentElement.parentElement.getAttribute('id');
+        window.location.href = `descpage.html?jobId=${jobId}`;
+        console.log(jobId)
+    }
+}
+
 const init2 = () => {
     filterByTitleForm.addEventListener('submit', searchByTitle);
     window.addEventListener('DOMContentLoaded', displayData);
+    window.addEventListener('click', redirectToDescPage);
 }
 
 init2();
