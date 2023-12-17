@@ -3,6 +3,7 @@ const popupBackground = document.querySelector('.popup-background');
 const filterFormPopupMobile = document.querySelector('.filter-form-popup-mobile');
 const filterByLocationInput = document.querySelector('#job-location');
 const filterLocationForm = document.querySelector('.filter-location-form');
+const fulltimeCheckbox = document.querySelector('.fulltime-checkbox');
 
 const showPopup = () => {
     popupBackground.classList.add('overlay');
@@ -22,6 +23,13 @@ const closePopupAfterLocationFilter = () => {
     popupBackground.classList.remove('overlay');
     filterFormPopupMobile.classList.remove('visible');
     filterFormPopupMobile.classList.add('hidden');
+}
+
+const createLoadMoreBtn = () => {
+    const loadMoreBtn = document.createElement('button');
+    loadMoreBtn.classList.add('btn-primary', 'load-more-btn');
+    loadMoreBtn.textContent = 'Load More';
+    jobsOuterContainer.appendChild(loadMoreBtn);
 }
 
 const getData = async () => {
@@ -45,10 +53,7 @@ const displayData = async () => {
         div.setAttribute('id', job.id);        
         jobsOuterContainer.appendChild(div);
     });
-    const loadMoreBtn = document.createElement('button');
-    loadMoreBtn.classList.add('btn-primary', 'load-more-btn');
-    loadMoreBtn.textContent = 'Load More';
-    jobsOuterContainer.appendChild(loadMoreBtn);
+    createLoadMoreBtn();
 }
 
 const displayFilteredData = (filteredJobs) => {
@@ -66,10 +71,7 @@ const displayFilteredData = (filteredJobs) => {
         div.setAttribute('id', job.id);
         jobsOuterContainer.appendChild(div);
     });
-    const loadMoreBtn = document.createElement('button');
-    loadMoreBtn.classList.add('btn-primary', 'load-more-btn');
-    loadMoreBtn.textContent = 'Load More';
-    jobsOuterContainer.appendChild(loadMoreBtn);
+    createLoadMoreBtn();
 }
 
 const searchByTitle = async (e) => {
@@ -82,15 +84,22 @@ const searchByTitle = async (e) => {
     filterByTitleInput.value = '';
 }
 
-const searchByLocation = async (e) => {
+const searchJobs = async (e) => {
     e.preventDefault();
     const data = await getData();
-    const filteredJobsByLocation = data.filter(job => {
-        return job.location.toLowerCase().includes(filterByLocationInput.value.toLowerCase());
+
+    const locationFilterValue = filterByLocationInput.value.toLowerCase();
+    const isFullTimeChecked = fulltimeCheckbox.checked;
+
+    const filteredJobs = data.filter(job => {
+        const locationMatch = job.location.toLowerCase().includes(locationFilterValue);
+        const fullTimeMatch = isFullTimeChecked ? job.contract.toLowerCase() === 'full time' : true;
+        return locationMatch && fullTimeMatch;
     });
-    displayFilteredData(filteredJobsByLocation);
+    displayFilteredData(filteredJobs);
     filterByLocationInput.value = '';
     closePopupAfterLocationFilter();
+    fulltimeCheckbox.checked = false;
 }
 
 const redirectToDescPage = (e) => {
@@ -105,7 +114,7 @@ const init2 = () => {
     popupBackground.addEventListener('click', closePopup);
     filterIcon.addEventListener('click', showPopup);
     filterByTitleForm.addEventListener('submit', searchByTitle);
-    filterLocationForm.addEventListener('submit', searchByLocation);
+    filterLocationForm.addEventListener('submit', searchJobs);
     window.addEventListener('DOMContentLoaded', displayData);
     window.addEventListener('click', redirectToDescPage);
 }
