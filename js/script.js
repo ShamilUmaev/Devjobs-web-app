@@ -1,5 +1,6 @@
 const toggleModeBtn = document.querySelector("input[type='checkbox']");
 const pageOuterContainer = document.querySelector('.page-outer-container');
+const body = document.querySelector('body')
 const filterByTitleForm = document.querySelector('.filter-title-form');
 
 const filterIcon = document.querySelector('.filter-svg');
@@ -20,7 +21,7 @@ const switchToDarkMode = () => {
     toggleModeBtn.checked = true;
     localStorage.setItem('mode', 'dark');
     if(window.location.pathname === '/descpage.html') { 
-        pageOuterContainer.classList.add('dark-mode-midnight');
+        body.classList.add('dark-mode-midnight');
         card.forEach(card => {
             card.classList.add('dark-mode-job-card');
         });
@@ -31,7 +32,7 @@ const switchToDarkMode = () => {
         });
         footer.classList.add('dark-mode-dark-blue');
     } else {
-        pageOuterContainer.classList.add('dark-mode-midnight');
+        body.classList.add('dark-mode-midnight');
         filterByTitleForm.classList.add('dark-mode-dark-blue');
         filterIcon.classList.add('filter-icon-dark-mode');
         card.forEach(card => {
@@ -49,7 +50,7 @@ const removeDarkMode = () => {
     toggleModeBtn.checked = false;
     localStorage.removeItem("mode");
     if(window.location.pathname === '/descpage.html') {
-        pageOuterContainer.classList.remove('dark-mode-midnight');
+        body.classList.remove('dark-mode-midnight');
         card.forEach(card => {
             card.classList.remove('dark-mode-job-card');
         });
@@ -60,7 +61,7 @@ const removeDarkMode = () => {
         });
         footer.classList.remove('dark-mode-dark-blue');
     } else {
-        pageOuterContainer.classList.remove('dark-mode-midnight');
+        body.classList.remove('dark-mode-midnight');
         filterByTitleForm.classList.remove('dark-mode-dark-blue');
         filterIcon.classList.remove('filter-icon-dark-mode');
         card.forEach(card => {

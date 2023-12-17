@@ -3,7 +3,6 @@
 /* Page outer container */
 .page-outer-container {
   min-width: 375px;
-  background-color: var(--light-grey);
 }
 
 /* Search input */

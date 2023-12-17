@@ -4,11 +4,20 @@ const filterFormPopupMobile = document.querySelector('.filter-form-popup-mobile'
 const filterByLocationInput = document.querySelector('#job-location');
 const filterLocationForm = document.querySelector('.filter-location-form');
 const fulltimeCheckbox = document.querySelector('.fulltime-checkbox');
+const mainSection = document.querySelector('.main-section');
 
 const showPopup = () => {
     popupBackground.classList.add('overlay');
     filterFormPopupMobile.classList.remove('hidden');
     filterFormPopupMobile.classList.add('visible');
+}
+
+const showNotFoundMsg = () => {
+    const notFoundMsg = document.createElement('h1');
+    notFoundMsg.style.textAlign = 'center';
+    notFoundMsg.style.marginTop = '15rem';
+    notFoundMsg.textContent = 'No results found';
+    jobsOuterContainer.appendChild(notFoundMsg);
 }
 
 const closePopup = (e) => {
@@ -80,7 +89,13 @@ const searchByTitle = async (e) => {
     const filteredJobsByTitle = data.filter(job => {
         return job.position.toLowerCase().includes(filterByTitleInput.value.toLowerCase());
     });
-    displayFilteredData(filteredJobsByTitle);
+    if(filteredJobsByTitle.length === 0) {
+        jobsOuterContainer.innerHTML = '';
+        showNotFoundMsg();
+    } else {
+        jobsOuterContainer.innerHTML = '';
+        displayFilteredData(filteredJobsByTitle);
+    }
     filterByTitleInput.value = '';
 }
 
