@@ -62,7 +62,7 @@
 }
 
 .dark-mode-font {
-    color: var(--white);
+    color: var(--white) !important;
 }
   
 /* Wraper */

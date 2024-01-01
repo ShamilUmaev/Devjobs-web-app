@@ -97,6 +97,7 @@ const searchByTitle = (e) => {
         jobsOuterContainer.innerHTML = '';
         displayFilteredData(filteredJobsByTitle);
         globalData.currentLoadedData = filteredJobsByTitle;
+        toggleBtn();
     }
     filterByTitleInput.value = '';
 }
@@ -119,6 +120,7 @@ const searchJobsByLocationAndContract = (e) => {
     } else {
         jobsOuterContainer.innerHTML = '';
         displayFilteredData(filteredJobs);
+        toggleBtn();
         globalData.currentLoadedData = filteredJobs;
     }
     filterByLocationInput.value = '';
@@ -163,20 +165,134 @@ const loadMoreJobs = (e) => {
     const nextLoadedJobs = globalData.currentLoadedData.slice(startIndexOfSlice, endIndexOfSlice);
     removeLoadMoreBtn();
     displayData(nextLoadedJobs);
+    toggleBtn();
 
     if(endIndexOfSlice < globalData.currentLoadedData.length) {
         createLoadMoreBtn();
     }
 }
 
-const init2 = () => {
+let toggleModeBtn = document.querySelector("input[type='checkbox']");
+const pageOuterContainer = document.querySelector('.page-outer-container');
+const body = document.querySelector('body')
+const filterByTitleForm = document.querySelector('.filter-title-form');
+
+const filterIcon = document.querySelector('.filter-svg');
+const card = document.querySelectorAll('.card');
+const jobTitles = document.querySelectorAll('.job-title');
+
+const fulltimeLabel = document.querySelector('.fulltime-label');
+const footer = document.querySelector('.footer');
+const headings = document.querySelectorAll('h4');
+const jobDescBg = document.querySelector('.job-desc-outer-container');
+const companyName = document.querySelector('.company-name');
+const customCheckbox = document.querySelector('.checkmark');
+const jobsOuterContainer = document.querySelector('.jobs-outer-container');
+const filterByTitleInput = document.querySelector('#filter-by-title');
+// const filterByTitleForm = document.querySelector('.filter-title-form');
+
+const toggleBtn = () => {
+    if(toggleModeBtn.checked) {
+        localStorage.setItem('mode', 'dark');
+        switchToDarkMode();
+    } else {
+        localStorage.removeItem("mode");
+        removeDarkMode();
+    }
+}
+
+
+const switchToDarkMode = () => {
+    // if(window.location.pathname === '/descpage.html') {
+    //     body.classList.add('dark-mode-midnight');
+    //     card.forEach(card => {
+    //         card.classList.add('dark-mode-job-card');
+    //     });
+    //     companyName.classList.add('dark-mode-font');
+    //     jobDescBg.classList.add('dark-mode-dark-blue');
+    //     headings.forEach(heading => {
+    //         heading.classList.add('dark-mode-font');
+    //     });
+    //     footer.classList.add('dark-mode-dark-blue');
+    // } else {
+        // jobsOuterContainer.children.forEach(child => {
+        //     console.log(child);
+        // });
+        
+        body.classList.add('dark-mode-midnight');
+        filterByTitleForm.classList.add('dark-mode-dark-blue');
+        filterByTitleInput.classList.add('dark-mode-font');
+        console.log(filterByTitleInput)
+        filterIcon.classList.add('filter-icon-dark-mode');
+        const jobsC = jobsOuterContainer.children;
+        console.log(jobsC)
+        Array.from(jobsC)?.forEach(child => {
+            if(!child.classList.contains('load-more-btn')) {
+                child.classList?.add('dark-mode-job-card');
+                child.querySelector('h4').classList.add('dark-mode-font');
+            }
+        });
+    // }
+}
+
+const removeDarkMode = () => {
+    // if(window.location.pathname === '/descpage.html') {
+    //     body.classList.remove('dark-mode-midnight');
+    //     card.forEach(card => {
+    //         card.classList.remove('dark-mode-job-card');
+    //     });
+    //     companyName.classList.remove('dark-mode-font');
+    //     jobDescBg.classList.remove('dark-mode-dark-blue');
+    //     headings.forEach(heading => {
+    //         heading.classList.remove('dark-mode-font');
+    //     });
+    //     footer.classList.remove('dark-mode-dark-blue');
+    // } else {
+        body.classList.remove('dark-mode-midnight');
+        filterByTitleForm.classList.remove('dark-mode-dark-blue');
+        filterByTitleInput.classList.remove('dark-mode-font');
+        filterIcon.classList.remove('filter-icon-dark-mode');
+        const jobsC = jobsOuterContainer.children;
+        Array.from(jobsC)?.forEach(child => {
+            child.classList?.remove('dark-mode-job-card');
+            child.querySelector('h4')?.classList.remove('dark-mode-font');
+        })
+    // }
+}
+
+const checkMode = async () => {
+    await getData();
+    if(localStorage.getItem('mode') === 'dark') {
+        toggleModeBtn.checked = true;
+        switchToDarkMode();
+    }
+    else {
+        toggleModeBtn.checked = false;
+        removeDarkMode();
+    }
+}
+
+// const init = () => {
+    // if(window.location.pathname !== '/descpage.html') {
+        
+    // }
+    // window.addEventListener('pageshow', checkMode);
+    // toggleModeBtn.addEventListener('click', toggleMode);
+// }
+
+// init();
+
+
+const init = () => {
     popupBackground.addEventListener('click', closePopup);
     filterIcon.addEventListener('click', showPopup);
     filterByTitleForm.addEventListener('submit', searchByTitle);
     filterLocationForm.addEventListener('submit', searchJobsByLocationAndContract);
-    document.addEventListener('DOMContentLoaded', getData);
+    // document.addEventListener('DOMContentLoaded', getData);
     jobsOuterContainer.addEventListener('click', redirectToDescPage);
     window.addEventListener('click', loadMoreJobs);
+    toggleModeBtn.addEventListener('click', toggleBtn);
+    window.addEventListener('DOMContentLoaded', checkMode);
 }
 
-init2();
+init();
