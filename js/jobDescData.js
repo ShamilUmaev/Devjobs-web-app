@@ -1,11 +1,14 @@
 const mainSection = document.querySelector('.main-section');
+const pageOuterContainer = document.querySelector('.page-outer-container');
+let toggleModeBtn = document.querySelector("input[type='checkbox']");
+
+import {toggleBtn, checkMode} from './darkMode.js';
 
 const getData = async () => {
     const jobId = window.location.search.split('=')[1];
     const response = await fetch('../data.json');
     const data = await response.json();
     const filteredData = data.filter(job => job.id === parseInt(jobId));
-    console.log(filteredData[0]);
     return filteredData[0];
 }
 
@@ -16,8 +19,10 @@ const displayData = async () => {
     wrapper.innerHTML = `
         <div class="card company-desc-card">
             <div class="job-company-logo" style="background-color: ${data.logoBackground};"><img src=${data.logo} class="job-company-logo-img"></div>
-            <h4 class="company-name">${data.company}</h4>
-            <p class="company-link"><a href="#">${data.website}</a></p>
+            <div class="company-info">
+                <h4 class="company-name">${data.company}</h4>
+                <p class="company-link"><a href="#">${data.website}</a></p>
+            </div>
             <a class="btn-secondary" href="${data.website}">Company Site</a>
         </div>
         <div class="job-desc-outer-container">
@@ -59,10 +64,16 @@ const displayData = async () => {
     footer.classList.add('footer');
     footer.innerHTML = `
         <div class="wrapper">
+            <div class="desktop-only footer-job-title-container">
+                <h4 class="job-title">${data.position}</h4>
+                <p>So Digital Inc.</p>
+            </div>
             <a class="btn-primary apply-btn" href="#">Apply Now</a>
         </div>
     `
     pageOuterContainer.appendChild(footer);
+    checkMode();
 }
 
-displayData()
+window.addEventListener('DOMContentLoaded', displayData);
+toggleModeBtn.addEventListener('click', toggleBtn);

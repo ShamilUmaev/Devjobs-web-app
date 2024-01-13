@@ -70,3 +70,12 @@
 input:checked + .slider:before {
     transform: translateX(26px);
 }
+
+@media only screen and (min-width: 768px) {
+    .header-top {
+        /* height: 135px;
+        width: 100%;
+        padding-top: 1.8rem; */
+        background: url("../assets/tablet/bg-pattern-header.svg") no-repeat center center/cover;
+    }
+}

@@ -4,7 +4,7 @@
 /* Page outer container */
 .page-outer-container {
     min-width: 375px;
-    background-color: var(--light-grey);
+    /* background-color: var(--light-grey); */
 }
 
 /* Main section */
@@ -21,7 +21,8 @@
 
 /* Background for company description */
 .company-desc-card {
-    padding: 5rem 3.5rem 3rem;
+    /* padding: 5rem 3.5rem 3rem; */
+    height: 205px;
     position: relative;
     transform: translateY(-10%);
     display: flex;
@@ -47,6 +48,7 @@
 /* Name of the company */
 .company-name {
     font-size: 2rem;
+    text-align: center;
 }
 
 /* Link to the company webpage */
@@ -168,7 +170,98 @@
 
 .footer {
     margin-top: 6rem;
-    padding: 3rem 0;
+    padding: 2rem 0;
     background-color: var(--white);
     border-radius: 6px 6px 0 0;
+}
+
+.desktop-only {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    /* Background for company description */
+    .company-desc-card {
+        height: 140px;
+        transform: translateY(-20%);
+        padding-right: 4.5rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .job-company-logo {
+        position: static;
+        transform: none;
+        width: 20%;
+        height: 140px;
+        border-radius: 0 0 0 6px;
+    }
+
+    .company-name {
+        font-size: 2.4rem;
+        text-align: left;
+    }
+
+    .company-info {
+        width: 280px;
+    }
+
+    .company-link a {
+        margin: .3rem 0 0;
+    }
+
+    /* Description header */
+    .desc-header {
+        padding: 3.5rem 4.5rem;
+    }
+
+    .desc-body {
+        padding: 0 4.5rem 3.5rem;
+        font-size: 1.6rem;
+        line-height: 1.6em;
+        color: var(--dark-grey);   
+    }
+
+    .job-title {
+        font-size: 2.8rem;
+        margin: 1rem 0;
+    }
+
+    /* Text content of the description header */
+    .desc-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .company-location {
+        margin: 0;
+    }
+
+    .apply-btn {
+        width: 21%;
+        padding: 1.5rem 0;
+        text-align: center;
+    }
+
+    .desktop-only {
+        display: block;
+    }
+
+    .footer .wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    } 
+
+    .footer .job-title {
+        font-size: 2rem;
+        margin: 0 0 1rem;
+    }
+
+    .footer p {
+        color: var(--dark-grey);
+        font-size: 1.6rem;
+    }
 }
