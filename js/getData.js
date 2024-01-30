@@ -144,9 +144,9 @@ let startIndexOfSlice;
 let endIndexOfSlice;
 
 const shortenJobList = (data) => {
-        if(data.length > 5) {
+        if(data.length > 6) {
             startIndexOfSlice = 0;
-            endIndexOfSlice = 5;
+            endIndexOfSlice = 6;
             const shortenedJobsList = data.slice(startIndexOfSlice, endIndexOfSlice);
             displayData(shortenedJobsList);
             createLoadMoreBtn();
@@ -158,13 +158,13 @@ const shortenJobList = (data) => {
 const loadMoreJobs = (e) => {
     if(!e.target.classList.contains('load-more-btn')) return;
     
-    if(globalData.currentLoadedData.length < 5) {
+    if(globalData.currentLoadedData.length < 6) {
         removeLoadMoreBtn();
         return;
     }
 
-    startIndexOfSlice += 5;
-    endIndexOfSlice += 5;
+    startIndexOfSlice += 6;
+    endIndexOfSlice += 6;
 
     const nextLoadedJobs = globalData.currentLoadedData.slice(startIndexOfSlice, endIndexOfSlice);
     removeLoadMoreBtn();

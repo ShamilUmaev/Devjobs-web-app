@@ -43,8 +43,14 @@ input:-webkit-autofill:active{
   align-items: center;
 }
 
+.filter-icon-and-search-btn-mobile {
+  display: flex;
+  align-items: center;
+}
+
 .filter-svg {
   fill: #6E8098;
+  margin-right: 1.5rem;
 }
 
 .search-btn {
@@ -106,10 +112,10 @@ input:-webkit-autofill:active{
   margin: 3.5rem auto 0;
 }
 
-.load-more-btn[disabled] {
+/* .load-more-btn[disabled] {
   background-color: #ddd;
   cursor: not-allowed;
-}
+} */
 
 .filter-form-popup-mobile {
   position: absolute;
@@ -141,7 +147,7 @@ input:-webkit-autofill:active{
   font-weight: 700;
 }
 
-.filter-fulltime-only div {
+.filter-fulltime-only > div {
   width: 155px;
   position: relative;
   display: flex;
@@ -210,6 +216,137 @@ input:-webkit-autofill:active{
   display: block;
   /* visibility: hidden;
   max-height: auto; */
+}
+
+.desktop-only {
+  display: none;
+}
+
+i.desktop-only,
+span.desktop-only {
+  display: none;
+}
+
+i.mobile-only,
+svg.mobile-only {
+  display: block;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  
+  .overlay::before {
+    content: none;
+  }
+  
+  .desktop-only {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  i.desktop-only,
+  span.desktop-only {
+    display: block;
+  }
+  
+  i.mobile-only,
+  svg.mobile-only {
+    display: none;
+  }
+
+  .filter-title-form {
+    height: 74px;
+    padding: 0 2rem;
+  }
+  
+  .filter-title-form > div {
+    width: 33%;
+    height: 100%;
+  }
+
+  .filter-title-form > div:nth-child(2) {
+    border-left: 1px solid rgba(110, 128, 152, .2);
+    padding-left: 1.8rem;
+    max-width: 300px;
+  }
+
+  .filter-title-form > div:nth-child(3) {
+    border-left: 1px solid rgba(110, 128, 152, .2);
+    padding-left: 1.8rem;
+    max-width: 300px;
+  }
+
+  .search-by-title-outer-ctr {
+    display: flex;
+    align-items: center;
+    max-width: 40%;
+  }
+  
+  .fa-solid {
+    width: 15%;
+    font-size: 1.6rem;
+    color: var(--violet);
+  }
+
+  .input-filter-by-title {
+    width: 70%;
+  }
+
+  .filter-location-text-input {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    border: none;
+  }
+
+  .location-svg {
+    margin: 0;
+  }
+
+  .filter-location-text-input input[type="text"] {
+    width: 75%;
+  }
+
+  .filter-fulltime-only {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search-btn {
+    width: 100%;
+    padding: 1.3rem .5rem;
+  }
+
+  .filter-fulltime-only > div:nth-child(1) {
+    width: 105px;
+  }
+
+  .filter-fulltime-only > div:nth-child(2) {
+    width: 38%;
+  }
+
+  .filter-location-text-input > div {
+    width: 180px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .jobs-outer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .job-card {
+    width: 49%;
+  }
+  
 }
 
 
