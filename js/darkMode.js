@@ -46,6 +46,12 @@ const switchToDarkMode = () => {
                 child.querySelector('h4').classList.add('dark-mode-font');
             }
         });
+        const popup = document.querySelector('.filter-form-popup-mobile');
+        popup.classList.add('dark-mode-job-card');
+        const fulltimeLabels = document.querySelectorAll('.fulltime-label');
+        fulltimeLabels.forEach(label => {
+            label.classList.add('dark-mode-font');
+        });
     }
 }
 
@@ -75,7 +81,13 @@ const removeDarkMode = () => {
         Array.from(jobCardList)?.forEach(child => {
             child.classList?.remove('dark-mode-job-card');
             child.querySelector('h4')?.classList.remove('dark-mode-font');
-        })
+        });
+        const popup = document.querySelector('.filter-form-popup-mobile');
+        popup.classList.remove('dark-mode-job-card');
+        const fulltimeLabels = document.querySelectorAll('.fulltime-label');
+        fulltimeLabels.forEach(label => {
+            label.classList.remove('dark-mode-font');
+        });
     }
 }
 

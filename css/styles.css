@@ -148,7 +148,7 @@ input:-webkit-autofill:active{
 }
 
 .filter-fulltime-only > div {
-  width: 155px;
+  width: 145px;
   position: relative;
   display: flex;
   align-items: center;
@@ -164,6 +164,7 @@ input:-webkit-autofill:active{
 /* Overlay when the popup to filter the jobs is showen */
 .overlay {
   height: 100vh;
+  min-width: 375px;
   position: relative;
   overflow: hidden;
 }
