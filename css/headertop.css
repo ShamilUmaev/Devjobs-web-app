@@ -73,9 +73,12 @@ input:checked + .slider:before {
 
 @media only screen and (min-width: 768px) {
     .header-top {
-        /* height: 135px;
-        width: 100%;
-        padding-top: 1.8rem; */
         background: url("../assets/tablet/bg-pattern-header.svg") no-repeat center center/cover;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .header-top {
+        background: url("../assets/desktop/bg-pattern-header.svg") no-repeat center center/cover;
     }
 }

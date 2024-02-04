@@ -51,7 +51,8 @@ const createLoadMoreBtn = () => {
     const loadMoreBtn = document.createElement('button');
     loadMoreBtn.classList.add('btn-primary', 'load-more-btn');
     loadMoreBtn.textContent = 'Load More';
-    jobsOuterContainer.appendChild(loadMoreBtn);
+    // jobsOuterContainer.appendChild(loadMoreBtn);
+    document.querySelector('.main-section').appendChild(loadMoreBtn);
 }
 
 const removeLoadMoreBtn = () => {
@@ -144,9 +145,9 @@ let startIndexOfSlice;
 let endIndexOfSlice;
 
 const shortenJobList = (data) => {
-        if(data.length > 6) {
+        if(data.length > 8) {
             startIndexOfSlice = 0;
-            endIndexOfSlice = 6;
+            endIndexOfSlice = 8;
             const shortenedJobsList = data.slice(startIndexOfSlice, endIndexOfSlice);
             displayData(shortenedJobsList);
             createLoadMoreBtn();
@@ -158,13 +159,13 @@ const shortenJobList = (data) => {
 const loadMoreJobs = (e) => {
     if(!e.target.classList.contains('load-more-btn')) return;
     
-    if(globalData.currentLoadedData.length < 6) {
+    if(globalData.currentLoadedData.length < 8) {
         removeLoadMoreBtn();
         return;
     }
 
-    startIndexOfSlice += 6;
-    endIndexOfSlice += 6;
+    startIndexOfSlice += 8;
+    endIndexOfSlice += 8;
 
     const nextLoadedJobs = globalData.currentLoadedData.slice(startIndexOfSlice, endIndexOfSlice);
     removeLoadMoreBtn();

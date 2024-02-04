@@ -7,9 +7,8 @@
     /* background-color: var(--light-grey); */
 }
 
-/* Main section */
-.main-section {
-    
+.main-section .wrapper {
+    max-width: 992px;
 }
 
 /* Background for text content */
@@ -21,10 +20,16 @@
 
 /* Background for company description */
 .company-desc-card {
-    /* padding: 5rem 3.5rem 3rem; */
-    height: 205px;
+    height: 215px;
     position: relative;
     transform: translateY(-10%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.company-desc-card > div:nth-child(2) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -251,6 +256,8 @@
     }
 
     .footer .wrapper{
+        max-width: 992px;
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -265,4 +272,23 @@
         color: var(--dark-grey);
         font-size: 1.6rem;
     }
+
+    .company-desc-card {
+        justify-content: flex-start;
+        column-gap: 3rem;
+    }
+
+    .company-desc-card > div:nth-child(2) {
+        width: 80%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    /* .footer .wrapper {
+        max-width: 992px;
+    } */
 }

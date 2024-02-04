@@ -19,11 +19,13 @@ const displayData = async () => {
     wrapper.innerHTML = `
         <div class="card company-desc-card">
             <div class="job-company-logo" style="background-color: ${data.logoBackground};"><img src=${data.logo} class="job-company-logo-img"></div>
-            <div class="company-info">
-                <h4 class="company-name">${data.company}</h4>
-                <p class="company-link"><a href="#">${data.website}</a></p>
+            <div>
+                <div class="company-info">
+                    <h4 class="company-name">${data.company}</h4>
+                    <p class="company-link"><a href="#">${data.website}</a></p>
+                </div>
+                <a class="btn-secondary" href="${data.website}">Company Site</a>
             </div>
-            <a class="btn-secondary" href="${data.website}">Company Site</a>
         </div>
         <div class="job-desc-outer-container">
             <div class="desc-header">
