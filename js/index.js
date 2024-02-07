@@ -305,5 +305,6 @@ const init = () => {
         searchByAllInputs(desktopFilterByTitleInput, desktopFilterByLocationInput, desktopFulltimeCheckbox);
     });
 }
+window.addEventListener('popstate', checkMode);
 
 init();
