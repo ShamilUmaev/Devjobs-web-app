@@ -220,7 +220,7 @@ const loadMoreJobs = (e) => {
     toggleBtn();
     setTimeout(() => {
         closeLoader();
-    }, 500)
+    }, 500);
 
     if(endIndexOfSlice > globalData.currentLoadedData.length) {
         removeLoadMoreBtn();
