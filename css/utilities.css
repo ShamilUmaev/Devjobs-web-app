@@ -9,6 +9,7 @@
     border-radius: 5px;
     font-size: 1.6rem;
     font-weight: 600;
+    transition: background-color .1s ease-in;
 }
 
 /* Secondary button */
@@ -19,6 +20,7 @@
     font-weight: 600;
     border-radius: 5px;
     padding: 1.5rem 2.5rem;
+    transition: background-color .1s ease-in;
 }
 
 /* Bullet point */
@@ -37,6 +39,17 @@
     align-items: center;
     color: var(--dark-grey);
     font-size: 1.6rem;
+}
+
+.logo-link {
+    color: var(--white);
+    opacity: 1;
+    transition: opacity .1s ease-in;
+}
+
+.logo-link:hover {
+    opacity: .9;
+    transition: opacity .1s ease-in;
 }
 
 /* Company logo image */
@@ -75,14 +88,34 @@
 /* Hide class */
 .hidden {
     display: none;
-    /* visibility: hidden;
-    max-height: 0; */
 }
 
 /* Visible */
 .visible {
     display: block;
-    /* visibility: hidden;
-    max-height: auto; */
+}
+
+.not-found-msg {
+    width: 100%;
+    font-size: 2.2rem;
+    text-align: center;
+    justify-self: center;
+    margin-top: 15rem;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    
+    .btn-primary:hover {
+        background-color: #5964e0e6;
+        cursor: pointer;
+        transition: background-color .1s ease-in;
+    }
+    
+    .btn-secondary:hover {
+        cursor: pointer;
+        background-color: #5964e0e6;
+        transition: background-color .1s ease-in;
+    }
 }
 

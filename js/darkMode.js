@@ -5,6 +5,8 @@ const filterByTitleForm = document.querySelector('.filter-title-form');
 const filterIcon = document.querySelector('.filter-svg');
 const jobsOuterContainer = document.querySelector('.jobs-outer-container');
 const filterByTitleInput = document.querySelector('#filter-by-title');
+const desktopForm = document.querySelector('.desktop-form');
+const inputs = document.querySelectorAll('input[type="text"]');
 
 const toggleBtn = () => {
     if(toggleModeBtn.checked) {
@@ -15,7 +17,6 @@ const toggleBtn = () => {
         removeDarkMode();
     }
 }
-
 
 const switchToDarkMode = () => {
     if(window.location.pathname === '/descpage.html') {
@@ -37,21 +38,28 @@ const switchToDarkMode = () => {
     } else {
         body.classList.add('dark-mode-midnight');
         filterByTitleForm.classList.add('dark-mode-dark-blue');
+        desktopForm.classList.add('dark-mode-dark-blue');
+        inputs.forEach(input => input.classList.add('dark-mode-font'));
         filterByTitleInput.classList.add('dark-mode-font');
         filterIcon.classList.add('filter-icon-dark-mode');
         const jobCardList = jobsOuterContainer.children;
         Array.from(jobCardList)?.forEach(child => {
-            if(!child.classList.contains('load-more-btn')) {
+            if(!child.classList.contains('load-more-btn') && !child.classList.contains('not-found-msg')) {
                 child.classList?.add('dark-mode-job-card');
                 child.querySelector('h4').classList.add('dark-mode-font');
             }
         });
         const popup = document.querySelector('.filter-form-popup-mobile');
-        popup.classList.add('dark-mode-job-card');
+        // popup.classList.add('dark-mode-job-card');
+        popup.classList.add('dark-mode-dark-blue');
         const fulltimeLabels = document.querySelectorAll('.fulltime-label');
         fulltimeLabels.forEach(label => {
             label.classList.add('dark-mode-font');
         });
+        const notFoundMsg = document.querySelector('.not-found-msg');
+        notFoundMsg?.classList.add('dark-mode-font');
+        const loader = document.querySelector('.loader');
+        loader.classList.add('dark-mode-font');
     }
 }
 
@@ -75,6 +83,8 @@ const removeDarkMode = () => {
     } else {
         body.classList.remove('dark-mode-midnight');
         filterByTitleForm.classList.remove('dark-mode-dark-blue');
+        desktopForm.classList.remove('dark-mode-dark-blue');
+        inputs.forEach(input => input.classList.remove('dark-mode-font'));
         filterByTitleInput.classList.remove('dark-mode-font');
         filterIcon.classList.remove('filter-icon-dark-mode');
         const jobCardList = jobsOuterContainer.children;
@@ -83,11 +93,16 @@ const removeDarkMode = () => {
             child.querySelector('h4')?.classList.remove('dark-mode-font');
         });
         const popup = document.querySelector('.filter-form-popup-mobile');
-        popup.classList.remove('dark-mode-job-card');
+        // popup.classList.remove('dark-mode-job-card');
+        popup.classList.remove('dark-mode-dark-blue');
         const fulltimeLabels = document.querySelectorAll('.fulltime-label');
         fulltimeLabels.forEach(label => {
             label.classList.remove('dark-mode-font');
         });
+        const notFoundMsg = document.querySelector('.not-found-msg');
+        notFoundMsg?.classList.remove('dark-mode-font');
+        const loader = document.querySelector('.loader');
+        loader.classList.remove('dark-mode-font');
     }
 }
 

@@ -217,6 +217,16 @@
         margin: .3rem 0 0;
     }
 
+    .company-desc-card .btn-secondary {
+        background-color: #5964E01a;
+        transition: background-color .1s ease-in;
+    }
+
+    .company-desc-card .btn-secondary:hover {
+        background-color: #5964E033;
+        transition: background-color .1s ease-in;
+    }
+
     /* Description header */
     .desc-header {
         padding: 3.5rem 4.5rem;
