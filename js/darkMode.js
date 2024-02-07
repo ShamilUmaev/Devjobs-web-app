@@ -64,7 +64,7 @@ const switchToDarkMode = () => {
 }
 
 const removeDarkMode = () => {
-    if(window.location.pathname === '/descpage.html') {
+    if(window.location.pathname.includes('/descpage.html')) {
         body.classList.remove('dark-mode-midnight');
         const companyDescCard = document.querySelector('.company-desc-card');
         companyDescCard.classList.remove('dark-mode-dark-blue');
