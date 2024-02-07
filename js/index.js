@@ -93,6 +93,10 @@ const removeLoadMoreBtn = () => {
     loadMoreBtn?.remove();
 }
 
+const turnOfAutoCompletionOnMobile = (element) => {
+    element.setAttribute("autocomplete", "off" );
+}
+
 const getData = async () => {
     const response = await fetch('../data.json?offset=0&limit=3');
     const data = await response.json();
@@ -267,8 +271,8 @@ const takeInputValuesToMobileForm = (tabletMediaQuery) => {
         mobileFilterByTitleInput.value = desktopFilterByTitleInput.value;
         mobileFilterByLocationInput.value = desktopFilterByLocationInput.value;
         mobileFulltimeCheckbox.checked = desktopFulltimeCheckbox.checked;
-        mobileFilterByTitleInput.setAttribute("autocomplete", "off" );
-        mobileFilterByLocationInput.setAttribute("autocomplete", "off" );
+        turnOfAutoCompletionOnMobile(mobileFilterByTitleForm);
+        turnOfAutoCompletionOnMobile(mobileFilterByLocationInput);
     }
 }
 
