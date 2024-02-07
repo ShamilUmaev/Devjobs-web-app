@@ -98,7 +98,7 @@ const turnOfAutoCompletionOnMobile = (element) => {
 }
 
 const getData = async () => {
-    const response = await fetch('../data.json?offset=0&limit=3');
+    const response = await fetch('../data.json');
     const data = await response.json();
     globalData.data = data;
     globalData.currentLoadedData = data;
