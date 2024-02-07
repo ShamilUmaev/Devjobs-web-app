@@ -6,7 +6,8 @@ import {toggleBtn, checkMode} from './darkMode.js';
 
 const getData = async () => {
     const jobId = window.location.search.split('=')[1];
-    const response = await fetch('../data.json');
+    // const response = await fetch('../data.json');
+    const response = await fetch('https://shamilumaev.github.io/Devjobs-web-app/data.json');
     const data = await response.json();
     const filteredData = data.filter(job => job.id === parseInt(jobId));
     return filteredData[0];
