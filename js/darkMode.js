@@ -19,7 +19,7 @@ const toggleBtn = () => {
 }
 
 const switchToDarkMode = () => {
-    if(window.location.pathname === '/descpage.html') {
+    if(window.location.pathname.includes('/descpage.html')) {
         body.classList.add('dark-mode-midnight');
         const companyDescCard = document.querySelector('.company-desc-card');
         companyDescCard.classList.add('dark-mode-dark-blue');
