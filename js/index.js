@@ -306,5 +306,6 @@ const init = () => {
     });
 }
 window.addEventListener('pageshow', checkMode);
+window.addEventListener('popstate', checkMode);
 
 init();

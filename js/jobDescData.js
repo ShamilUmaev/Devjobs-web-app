@@ -80,4 +80,5 @@ const displayData = async () => {
 
 window.addEventListener('DOMContentLoaded', displayData);
 toggleModeBtn.addEventListener('click', toggleBtn);
+window.addEventListener('pageshow', checkMode);
 window.addEventListener('popstate', checkMode);
