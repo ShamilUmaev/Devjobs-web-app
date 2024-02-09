@@ -42,7 +42,7 @@ const showLoader = () => {
     loaderBackground.classList.add('loader-background');
     loaderBackground.style.width = '100%';
     loaderBackground.style.height = '100%';
-    loaderBackground.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    loaderBackground.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     loaderBackground.style.overflow = 'scroll';
     loaderBackground.style.position = 'fixed';
     loaderBackground.style.top = '0';
@@ -216,11 +216,11 @@ const loadMoreJobs = (e) => {
 
     const nextLoadedJobs = globalData.currentLoadedData.slice(startIndexOfSlice, endIndexOfSlice);
     showLoader();
-    displayData(nextLoadedJobs);
-    toggleBtn();
     setTimeout(() => {
         closeLoader();
+        displayData(nextLoadedJobs);
     }, 500);
+    toggleBtn();
 
     if(endIndexOfSlice > globalData.currentLoadedData.length) {
         removeLoadMoreBtn();
