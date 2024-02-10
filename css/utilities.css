@@ -41,6 +41,11 @@
     font-size: 1.6rem;
 }
 
+.search-results-msg {
+    color: var(--dark-grey);
+    font-size: 1.6rem;
+}
+
 .logo-link {
     color: var(--white);
     opacity: 1;

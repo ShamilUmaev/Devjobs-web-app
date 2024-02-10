@@ -9,6 +9,7 @@ const mobileFilterByTitleInput = document.querySelector('.mobile-form .input-fil
 const mobileFilterByTitleForm = document.querySelector('.filter-title-form.mobile-form');
 const filterIcon = document.querySelector('.filter-svg');
 let toggleModeBtn = document.querySelector("input[type='checkbox']");
+const searchResultsAmount = document.querySelector('.search-results-msg');
 const body = document.querySelector('body');
 
 const desktopFilterByTitleInput = document.querySelector('.desktop-form .input-filter-by-title');
@@ -57,6 +58,15 @@ const closeLoader = () => {
     document.querySelector('.loader').classList.remove('visible');
 }
 
+const showAmountOfSearchResults = (currentAmount) => {
+    searchResultsAmount.textContent = `${currentAmount}`;
+    searchResultsAmount.classList.remove('hidden');
+}
+
+const closeAmountOfSearchResults = () => {
+    searchResultsAmount.classList.add('hidden');
+}
+
 const showNotFoundMsg = () => {
     jobsOuterContainer.innerHTML = '';
     const notFoundMsg = document.createElement('h2');
@@ -64,6 +74,7 @@ const showNotFoundMsg = () => {
     notFoundMsg.textContent = 'No results found';
     mainSection.appendChild(notFoundMsg);
     removeLoadMoreBtn();
+    closeAmountOfSearchResults();
     if(localStorage.getItem('mode') === 'darke') {
         notFoundMsg.classList.add('dark-mode-font');
     } else {
@@ -144,9 +155,9 @@ const searchByTitle = (e, filterByTitleInput) => {
         displayFilteredData(filteredJobsByTitle);
         globalData.currentLoadedData = filteredJobsByTitle;
         toggleBtn();
+        showAmountOfSearchResults(`${globalData.currentLoadedData.length} results`);
     }
     // filterByTitleInput.value = '';
-    console.log('gets called')
 }
 
 const searchJobsByLocationAndContract = (e, filterByLocationInput) => {
@@ -172,6 +183,7 @@ const searchJobsByLocationAndContract = (e, filterByLocationInput) => {
         displayFilteredData(filteredJobs);
         toggleBtn();
         globalData.currentLoadedData = filteredJobs;
+        showAmountOfSearchResults(`${globalData.currentLoadedData.length} results`);
     }
     // filterByLocationInput.value = '';
     closePopupAfterLocationFilter();
@@ -250,6 +262,7 @@ const searchByAllInputs = (title, location, contract) => {
         displayFilteredData(filteredJobsByAllInputs);
         toggleBtn();
         globalData.currentLoadedData = filteredJobsByAllInputs;
+        showAmountOfSearchResults(`${globalData.currentLoadedData.length} results`);
     }
 }
 
