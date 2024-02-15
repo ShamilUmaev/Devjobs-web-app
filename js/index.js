@@ -104,10 +104,6 @@ const removeLoadMoreBtn = () => {
     loadMoreBtn?.remove();
 }
 
-const turnOfAutoCompletionOnMobile = (element) => {
-    element.setAttribute("autocomplete", "off" );
-}
-
 const getData = async () => {
     // const response = await fetch('../data.json');
     const response = await fetch('https://shamilumaev.github.io/Devjobs-web-app/data.json');
@@ -240,8 +236,6 @@ const takeInputValuesToMobileForm = (tabletMediaQuery) => {
         mobileFilterByTitleInput.value = desktopFilterByTitleInput.value;
         mobileFilterByLocationInput.value = desktopFilterByLocationInput.value;
         mobileFulltimeCheckbox.checked = desktopFulltimeCheckbox.checked;
-        turnOfAutoCompletionOnMobile(mobileFilterByTitleInput);
-        turnOfAutoCompletionOnMobile(mobileFilterByLocationInput);
     }
 }
 
