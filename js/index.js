@@ -139,57 +139,6 @@ const displayFilteredData = (filteredJobs) => {
     shortenJobList(filteredJobs);
 }
 
-const searchByTitle = (e, filterByTitleInput) => {
-    e.preventDefault();
-    const filteredJobsByTitle = globalData.data.filter(job => {
-        return job.position.toLowerCase().includes(filterByTitleInput.value.toLowerCase());
-    });
-    if(filteredJobsByTitle.length < 1) {
-        removeNotFoundMsg();
-        jobsOuterContainer.innerHTML = '';
-        showNotFoundMsg();
-        checkMode();
-    } else {
-        removeNotFoundMsg();
-        jobsOuterContainer.innerHTML = '';
-        displayFilteredData(filteredJobsByTitle);
-        globalData.currentLoadedData = filteredJobsByTitle;
-        toggleBtn();
-        showAmountOfSearchResults(`${globalData.currentLoadedData.length} results`);
-    }
-    // filterByTitleInput.value = '';
-}
-
-const searchJobsByLocationAndContract = (e, filterByLocationInput) => {
-    e.preventDefault();
-
-    const locationFilterValue = filterByLocationInput.value.toLowerCase();
-    const isFullTimeChecked = mobileFulltimeCheckbox.checked;
-
-    const filteredJobs = globalData.data.filter(job => {
-        const locationMatch = job.location.toLowerCase().includes(locationFilterValue);
-        const fullTimeMatch = isFullTimeChecked ? job.contract.toLowerCase().includes('full time') : true;
-        return locationMatch && fullTimeMatch;
-    });
-
-    if(filteredJobs.length < 1) {
-        removeNotFoundMsg();
-        jobsOuterContainer.innerHTML = '';
-        showNotFoundMsg();
-        checkMode();
-    } else {
-        removeNotFoundMsg();
-        jobsOuterContainer.innerHTML = '';
-        displayFilteredData(filteredJobs);
-        toggleBtn();
-        globalData.currentLoadedData = filteredJobs;
-        showAmountOfSearchResults(`${globalData.currentLoadedData.length} results`);
-    }
-    // filterByLocationInput.value = '';
-    closePopupAfterLocationFilter();
-    // mobileFulltimeCheckbox.checked = false;
-}
-
 const redirectToDescPage = (e) => {
     if(e.target.classList.contains('job-title')) {
         e.preventDefault();
@@ -259,10 +208,16 @@ const searchByAllInputs = (title, location, contract) => {
     } else {
         removeNotFoundMsg();
         jobsOuterContainer.innerHTML = '';
-        displayFilteredData(filteredJobsByAllInputs);
+        closeAmountOfSearchResults();
+        removeLoadMoreBtn();
+        showLoader();
+        setTimeout(() => {
+            closeLoader();
+            displayFilteredData(filteredJobsByAllInputs);
+            showAmountOfSearchResults(`${globalData.currentLoadedData.length} jobs found`);
+        }, 400);
         toggleBtn();
         globalData.currentLoadedData = filteredJobsByAllInputs;
-        showAmountOfSearchResults(`${globalData.currentLoadedData.length} results`);
     }
 }
 
@@ -285,40 +240,39 @@ const takeInputValuesToMobileForm = (tabletMediaQuery) => {
         mobileFilterByTitleInput.value = desktopFilterByTitleInput.value;
         mobileFilterByLocationInput.value = desktopFilterByLocationInput.value;
         mobileFulltimeCheckbox.checked = desktopFulltimeCheckbox.checked;
-        turnOfAutoCompletionOnMobile(mobileFilterByTitleForm);
+        turnOfAutoCompletionOnMobile(mobileFilterByTitleInput);
         turnOfAutoCompletionOnMobile(mobileFilterByLocationInput);
     }
 }
 
-const init = () => {
-    popupBackground.addEventListener('click', closePopup);
-    filterIcon.addEventListener('click', showPopup);
-    mobileFilterByTitleForm.addEventListener('submit', (e) => {
-        searchByTitle(e, mobileFilterByTitleInput);
-    });
-    filterLocationFormMobile.addEventListener('submit', (e) => {
-        searchJobsByLocationAndContract(e, mobileFilterByLocationInput);
-        console.log(filterLocationFormMobile);
-    });
-    document.addEventListener('DOMContentLoaded', getData);
-    jobsOuterContainer.addEventListener('click', redirectToDescPage);
-    window.addEventListener('click', loadMoreJobs);
-    toggleModeBtn.addEventListener('click', toggleBtn);
-    // Attach listener function on state changes
-    laptopMediaQuery.addEventListener("change", () => {
-        changePlaceholderForLargedevice(laptopMediaQuery);
-    });
-    tabletMediaQuery.addEventListener("change", () => {
-        takeInputValuesToMobileForm(tabletMediaQuery);
-    });
+// Event listeners
+popupBackground.addEventListener('click', closePopup);
+filterIcon.addEventListener('click', showPopup);
+mobileFilterByTitleForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    searchByAllInputs(mobileFilterByTitleInput, mobileFilterByLocationInput, mobileFulltimeCheckbox);
+});
+filterLocationFormMobile.addEventListener('submit', (e) => {
+    e.preventDefault();
+    searchByAllInputs(mobileFilterByTitleInput, mobileFilterByLocationInput, mobileFulltimeCheckbox);
+    closePopupAfterLocationFilter();
+});
+document.addEventListener('DOMContentLoaded', getData);
+jobsOuterContainer.addEventListener('click', redirectToDescPage);
+window.addEventListener('click', loadMoreJobs);
+toggleModeBtn.addEventListener('click', toggleBtn);
+// Attach listener function on state changes
+laptopMediaQuery.addEventListener("change", () => {
     changePlaceholderForLargedevice(laptopMediaQuery);
+});
+tabletMediaQuery.addEventListener("change", () => {
+    takeInputValuesToMobileForm(tabletMediaQuery);
+});
+changePlaceholderForLargedevice(laptopMediaQuery);
 
-    desktopLargeForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        searchByAllInputs(desktopFilterByTitleInput, desktopFilterByLocationInput, desktopFulltimeCheckbox);
-    });
-}
+desktopLargeForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    searchByAllInputs(desktopFilterByTitleInput, desktopFilterByLocationInput, desktopFulltimeCheckbox);
+});
 window.addEventListener('pageshow', checkMode);
 window.addEventListener('popstate', checkMode);
-
-init();
